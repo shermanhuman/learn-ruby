@@ -1,3 +1,3 @@
 #!/bin/ruby
 
-puts "Hello, whirled."
+puts "Hello, wurld."
