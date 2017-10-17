@@ -19,4 +19,4 @@ print'Enter your name again: '
 name = gets
 puts 'Hello #{name}' 
 
-naa = "Death".capitalize
+naa = "Death".
