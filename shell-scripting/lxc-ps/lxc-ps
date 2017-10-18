@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+puts 'PID     RSS       VSZ        COMMAND'
+File.open("/sys/fs/cgroup/memory/lxc/#{ARGV[0]}/tasks", 'r') do |tasks|
+  tasks.each_line do |taskpid|
+    pspid = `ps -o pid= -o rss= -o vsz= -o command= -p #{taskpid}`
+    next if pspid.empty?
+    lineout = pspid.split(' ', 4)
+    pid = lineout[0]
+    rss = lineout[1].to_f / 1024
+    rss = rss.round(2)
+    vsz = lineout[2].to_f / 1024
+    vsz = vsz.round(2)
+    command = lineout[3]
+    puts "#{pid}  #{rss} MiB  #{vsz} MiB  #{command}"
+  end
+end
