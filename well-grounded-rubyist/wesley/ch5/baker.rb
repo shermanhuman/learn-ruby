@@ -34,7 +34,6 @@ class Baker
  def stir_batter
  end # stir_batter
 
-
-end # class Cake
+private :pour_flower, :add_egg, :stir_batter
 
 end # class Baker
